@@ -1,7 +1,7 @@
 'use strict';
 
 const AppSettings = {
-  appTitle: 'Example Application',
+  appTitle: 'Stikkar',
   apiUrl: '/api/v1'
 };
 
