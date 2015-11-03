@@ -16,6 +16,15 @@ function StickersCtrl() {
   	src: "images/browserify.png"
   }];
 
+  
+
+  vm.dropImage = function (obj, $event) {
+    var canvas = new fabric.Canvas('play_board');
+    fabric.Image.fromURL(obj.src, function(oImg) {
+      canvas.add(oImg);
+    });
+  };
+
 }
 
 export default {
