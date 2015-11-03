@@ -13,8 +13,17 @@
   <body>
 
       <div ui-view="header"></div>
-      <div ui-view="canvas"></div>
-
+      <div id="hero_container">
+        <div id="left_sidebar">
+        </div>
+        <div id="canvas_container">
+          <div ui-view="canvas" id="canvas"></div>
+        </div>
+        <div id="right_sidebar">
+        </div>
+      </div>
+      <div ui-view="footer"></div>
+      
       <script src="js/main.js"></script>
   </body>
 </html>

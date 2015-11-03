@@ -2,7 +2,7 @@
 @import 'typography';
 
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: 'FuturaMediumBT', Tahoma, Geneva, sans-serif;
   color: $font-color--dark;
   background-color: $background--light;
   padding: $half-space;
@@ -17,7 +17,6 @@ body {
     left: 0;
     right: 0;
     background: #000;
-    font-family: 'FuturaMediumBT', Tahoma, Geneva, sans-serif;
     -webkit-box-shadow: rgba(0,0,0,0.10) 0px 2px 5px;
     -moz-box-shadow: rgba(0,0,0,0.10) 0px 2px 5px;
     box-shadow: rgba(0,0,0,0.10) 0px 2px 5px;
@@ -26,7 +25,7 @@ body {
     .header_banner {
     	width: 200px;
     	height: 100%;
-    	background: #2DA43E;
+    	background: $green;
     	.menu_logo {
 		    float: left;
 		    margin: 14px 30px 0 60px;
@@ -47,8 +46,56 @@ body {
 	    width: 0;
 	    height: 0;
 	    border-style: solid;
-	    border-width: 60px 60px 0 0;
-	    border-color: #2da43e transparent;
+	    border-width: 54px 60px 0 0;
+	    border-color: $green transparent;
     }
     
+}
+
+/******* Hero Container Style **********/
+#hero_container {
+	position: absolute;
+	top: 54px;
+	left: 0px;
+	height: 100%;
+	min-width: 1000px;
+	width: 100%;
+
+	#left_sidebar {
+		width: 296px;
+		height: 100%;
+		background: #EBEFF3;
+    	margin: 10px;
+    	float: left;
+    	z-index: 2;
+	}
+
+	#canvas_container {
+		height: 100%;
+		overflow:auto;
+		z-index: 1;
+		margin-right: 220px;
+
+		#canvas {
+			height: 500px;
+			width: 700px;
+			background: #fff;
+			margin: 100px auto;
+		}
+
+	}
+
+	#right_sidebar {
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		width: 200px;
+		height: 100%;
+		background: #EBEFF3;
+    	margin: 10px;
+    	z-index: 2;
+	}
+
+	
+
 }
