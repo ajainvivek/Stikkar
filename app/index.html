@@ -11,19 +11,24 @@
       <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-
-      <div ui-view="header"></div>
-      <div id="hero_container">
-        <div id="left_sidebar">
+      <div class="wrapper">
+        <div ui-view="header"></div>
+        <div id="hero_container">
+          <div id="left_sidebar">
+            <div class="header">
+              <h1>Stickers</h1>
+            </div>
+            <div ui-view="stickers" id="stickers"></div>
+          </div>
+          <div id="canvas_container">
+            <div ui-view="canvas" id="canvas"></div>
+          </div>
+          <div id="right_sidebar">
+            <div ui-view="photos" id="photos"></div>
+          </div>
         </div>
-        <div id="canvas_container">
-          <div ui-view="canvas" id="canvas"></div>
-        </div>
-        <div id="right_sidebar">
-        </div>
+        <div ui-view="footer"></div>
       </div>
-      <div ui-view="footer"></div>
-      
       <script src="js/main.js"></script>
   </body>
 </html>

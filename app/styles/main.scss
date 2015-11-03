@@ -8,6 +8,11 @@ body {
   padding: $half-space;
 }
 
+h1, h2, h3 {
+	margin: 0px;
+	padding: 0px;
+}
+
 /******* Header Style **********/
 #stikkar_header {
     min-width: 1000px;
@@ -31,7 +36,7 @@ body {
 		    margin: 14px 30px 0 60px;
 
 		    a {
-		    	color: #FFFFFF;
+		    	color: $font-color--light;
 			    text-decoration: none;
 			    font-size: 22px;
 			    letter-spacing: 4px;
@@ -61,6 +66,7 @@ body {
 	min-width: 1000px;
 	width: 100%;
 
+	/******* Left Sidebar Style **********/
 	#left_sidebar {
 		width: 296px;
 		height: 100%;
@@ -68,8 +74,74 @@ body {
     	margin: 10px;
     	float: left;
     	z-index: 2;
+
+    	.header {
+    		border-bottom: 1px solid #ccc;
+
+    		h1 {
+    			font-weight: 500;
+			    text-align: center;
+			    color: $green;
+			    margin: 10px;
+    		}
+    	}
+
+    	/******* Sticker Container Style **********/
+    	#stickers {
+    		.sticker_container {
+    			margin: 10px;
+
+    			.button_container {
+    				margin: 10px;
+
+    				#add_sticker {
+    					width: 200px;
+    					background: $dark;
+    					color: $white;
+    					margin: 0px auto;
+    					text-align: center;
+    					padding: 10px;
+
+    					&:hover {
+					    	cursor: pointer;
+					    }
+    				}
+    			}
+
+    			ul {
+    				margin: 0px 5px;
+    				padding: 0px;
+    				overflow-y: scroll;
+
+    				li {
+    					float: left;
+					    text-decoration: none;
+					    border: 1px solid #ccc;
+					    padding: 5px;
+					    list-style: none;
+					    margin: 5px 10px;
+					    height: 100%;
+					    width: 100px;
+
+					    &:hover {
+					    	background: rgba(0, 0, 0, 0.1);
+					    	cursor: pointer;
+					    }
+
+					    h1 {
+					    	font-size: 14px;
+						    font-weight: 500;
+						    text-align: center;
+					    } 
+    				}
+
+
+    			}
+    		}
+    	}
 	}
 
+	/******* Canvas Container Style **********/
 	#canvas_container {
 		height: 100%;
 		overflow:auto;
@@ -85,6 +157,7 @@ body {
 
 	}
 
+	/******* Right Sidebar Style **********/
 	#right_sidebar {
 		position: absolute;
 		right: 0px;
@@ -94,6 +167,64 @@ body {
 		background: #EBEFF3;
     	margin: 10px;
     	z-index: 2;
+
+    	#photos {
+    		#import_photo {
+    			height: 120px;
+    			width: 120px;
+    			margin: 10px auto;
+    			background: $white;
+
+    			&:hover {
+			    	background: rgba(0, 0, 0, 0.1);
+			    	cursor: pointer;
+			    } 
+
+    			.wrapper {
+    				padding-top: 25px;
+    				h1 {
+	    				color: $green;
+	    				text-align: center;
+	    				font-size: 28px
+	    			}
+
+	    			p {
+	    				font-size: 14px;
+	    				text-align: center;
+	    				margin: 5px;
+	    			}
+    			}
+    			
+    		}
+
+    		.line {
+				height: 1px;
+				width: 100%;
+				border-bottom: 1px solid #ccc;
+			}
+
+			ul {
+				margin: 0px 5px;
+				padding: 0px;
+				overflow-y: scroll;
+
+				li {
+					text-decoration: none;
+				    border: 1px solid #ccc;
+				    padding: 5px;
+				    list-style: none;
+				    margin: 10px auto;
+				    height: 120px;
+				    width: 120px;
+
+				    &:hover {
+				    	background: rgba(0, 0, 0, 0.1);
+				    	cursor: pointer;
+				    } 
+				}
+
+			}
+    	}
 	}
 
 	

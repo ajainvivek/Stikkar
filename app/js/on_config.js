@@ -8,13 +8,23 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
   .state('Home', {
   	url : "/",
     views : {
-    	'canvas' : {
-		    controller: 'ExampleCtrl as home',
-		    templateUrl: 'home.html',
-		    title: 'Home'
-    	},
     	'header' : {
 		    templateUrl: 'header.html'
+    	},
+    	'canvas' : {
+		    controller: 'CanvasCtrl as canvas',
+		    templateUrl: 'canvas.html',
+		    title: 'Canvas'
+    	},
+    	'stickers' : {
+    		controller: 'StickersCtrl as stickers',
+		    templateUrl: 'stickers.html',
+		    title: 'Stickers'
+    	},
+    	'photos' : {
+    		controller: 'PhotosCtrl as photos',
+		    templateUrl: 'photos.html',
+		    title: 'Photos'
     	}
     }
   });
