@@ -1,6 +1,6 @@
 'use strict';
 
-function StickersCtrl() {
+function StickersCtrl(CanvasFactory) {
 
   // ViewModel
   const vm = this;
@@ -16,10 +16,9 @@ function StickersCtrl() {
   	src: "images/browserify.png"
   }];
 
-  
-
+  //Add Image to Canvas Area
   vm.dropImage = function (obj, $event) {
-    var canvas = new fabric.Canvas('play_board');
+    let canvas = CanvasFactory.getCanvas();
     fabric.Image.fromURL(obj.src, function(oImg) {
       canvas.add(oImg);
     });
