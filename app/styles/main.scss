@@ -153,6 +153,16 @@ h1, h2, h3 {
 			width: 700px;
 			background: #fff;
 			margin: 50px auto;
+
+			.canvas_board {
+				position: relative;
+
+				canvas {
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
 		}
 
 	}

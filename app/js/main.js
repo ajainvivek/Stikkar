@@ -1,9 +1,11 @@
 'use strict';
 
 import angular from 'angular';
+import $ from 'jquery'
 
 // angular modules
 import 'ng-file-upload';
+import 'ng-dialog';
 import 'angular-ui-router';
 import './templates';
 import './filters';
@@ -21,11 +23,13 @@ const requires = [
   'app.services',
   'app.factories',
   'app.directives',
-  'ngFileUpload'
+  'ngFileUpload',
+  'ngDialog'
 ];
 
 // mount on window for testing
 window.app = angular.module('app', requires);
+window.$ = $;
 
 angular.module('app').constant('AppSettings', require('./constants'));
 

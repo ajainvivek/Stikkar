@@ -72,7 +72,8 @@
     "vinyl-source-stream": "^0.1.1",
     "watchify": "^3.4.0",
     "ng-file-upload": "latest",
-    "ng-dialog": "latest"
+    "ng-dialog": "latest",
+    "jquery": "latest"
   },
   "scripts": {
     "pretest": "npm install",

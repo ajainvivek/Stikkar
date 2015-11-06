@@ -1,14 +1,15 @@
 <div class="photo_container">
-	<div id="import_photo">
+	<div id="import_photo" ng-click="photos.clickUpload(); $event.stopPropagation();">
 		<div class="wrapper">
 			<h1>+</h1>
 			<p>IMPORT PHOTOS</p>
+			<input type="file" id="photo_upload" ng-file-select images="images" file-type="image" style="display:none;" >
 		</div>
 	</div>
 	<div class="line"></div>
 	<ul>
-		<li class="photos">
-			<img src="images/gulp.png" height="120" width="120">	
+		<li class="photos" ng-repeat="image in images">
+			<img src="{{image}}" height="120" width="120" ng-click="photos.dropImage(image, $event)">	
 		</li>
 	</ul>
 </div>
