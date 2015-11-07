@@ -1,0 +1,20 @@
+<div class="dialog_wrapper">
+	<form name="form">
+		<div class="ngdialog-message">
+			<h2 class="heading -medium">Upload New Sticker</h2>
+			<label name="title" class="heading -small">Enter Title <span class="warn">*</span></label>
+			<input type="textfield" placeholder="Title" ng-model="stickers.title" name="title" class="input_field" required=""/>
+			<div ng-show="form.$submitted || form.title.$touched">
+		      <div ng-show="form.title.$error.required" class="heading -small warn">Please enter the title</div>
+		    </div>
+			<input type="file" id="sticker_upload" ng-file-select images="previewImages" callback="stickers.onFileUpload()" file-type="image" style="display:none;" >
+			<div class="image_container" ng-repeat="image in previewImages">
+				<img src="{{image}}" ng-show="stickers.uploaded" height="120" width="120">
+			</div>
+		</div>
+		<div class="ngdialog-buttons">
+			<button type="submit" class="ngdialog-button ngdialog-button-primary" ng-show="stickers.uploaded" ng-click="stickers.submitSticker(form)">Submit</button>
+			<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-show="!stickers.uploaded" ng-click="stickers.uploadSticker()">Upload</button>
+		</div>
+	</form>	
+</div>

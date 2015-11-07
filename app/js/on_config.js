@@ -1,6 +1,6 @@
 'use strict';
 
-function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
+function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, ngDialogProvider) {
 
   $locationProvider.html5Mode(true);
 
@@ -30,6 +30,15 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
   });
 
   $urlRouterProvider.otherwise('/');
+
+  ngDialogProvider.setDefaults({
+    className: 'ngdialog-theme-default',
+    plain: false,
+    showClose: true,
+    closeByDocument: true,
+    closeByEscape: true,
+    appendTo: false
+  });
 
 }
 

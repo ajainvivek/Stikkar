@@ -5,7 +5,8 @@ function FileSelectDirective() {
     restrict: 'A',
     scope: {
       images: "=",
-      fileType: "@"
+      fileType: "@",
+      callback: '&'
     },
     link: function ($scope,el) {
       el.bind("change", function(e){
@@ -31,6 +32,9 @@ function FileSelectDirective() {
         FileReader.readAsDataUrl($scope.file, $scope)
         .then(function(result) {
           $scope.images.push(result);
+          if (typeof $scope.callback === "function") {
+            $scope.callback();
+          }
         });
       };
     }

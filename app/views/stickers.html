@@ -1,10 +1,11 @@
 <div class="sticker_container">
 	<div class="button_container">
-		<div id="add_sticker">Add Sticker</div>
+		<div id="add_sticker" ng-click="stickers.openUploadDialog()">Add Sticker</div>
 	</div>
 	<ul>
 		<li class="item" ng-repeat="image in stickers.images" ng-click="stickers.dropImage(image, $event)">
 			<h1>{{image.title}}</h1>
+			<div ng-show={{image.isUserUploaded}} class="delete" ng-click="stickers.deleteSticker(image)">X</div>
 			<img src="{{image.src}}" height="100" width="100">
 		</li>
 	</ul>
