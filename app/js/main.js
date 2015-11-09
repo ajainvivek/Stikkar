@@ -1,7 +1,7 @@
 'use strict';
 
-import angular from 'angular';
 import $ from 'jquery'
+import angular from 'angular';
 
 // angular modules
 import 'ng-file-upload';
