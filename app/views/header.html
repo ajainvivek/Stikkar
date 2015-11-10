@@ -5,4 +5,12 @@
 	    </div>
 	</div>
 	<div class="header_triangle"></div>
+	<div class="right_container">
+		<div class="button_container" ng-click="header.openDownloadDialog()">
+			Export 
+		</div>
+		<div class="button_container" ng-show="{{header.isEdited}}">
+			Save
+		</div>	
+	</div>
 </div>

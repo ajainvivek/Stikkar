@@ -1,0 +1,15 @@
+<div class="dialog_wrapper">
+	<form name="form">
+		<div class="ngdialog-message">
+			<h2 class="heading -medium">Export Photo</h2>
+			<label name="name" class="heading -small">Enter Name <span class="warn">*</span></label>
+			<input type="textfield" placeholder="Name" ng-model="header.name" name="name" class="input_field" required=""/>
+			<div ng-show="form.$submitted || form.name.$touched">
+		      <div ng-show="form.name.$error.required" class="heading -small warn">Please enter the name</div>
+		    </div>
+		</div>
+		<div class="ngdialog-buttons">
+			<button type="submit" class="ngdialog-button ngdialog-button-primary" ng-click="header.export(header.name, form)">Download</button>
+		</div>
+	</form>	
+</div>

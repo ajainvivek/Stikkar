@@ -1,6 +1,6 @@
 'use strict';
 
-function CanvasFactory() {
+function CanvasFactory($rootScope) {
 
   const factory = {};
 
@@ -11,6 +11,26 @@ function CanvasFactory() {
   //Once DOM is loaded instantiate canvas
   angular.element(document).ready(function () {
       factory.canvas = new fabric.Canvas("play_board");
+
+      factory.canvas.on({
+          'object:moving': function(e) {
+          },
+          'object:selected': function (e) {
+          }, 
+          'selection:cleared': function (e) {
+          },
+          'object:modified': function(e) {
+
+          },
+          'object:added': function(e) {
+            $rootScope.$broadcast('objectAdded', e);
+          },
+          'object:removed': function(e) {
+            $rootScope.$broadcast('objectRemoved', e);
+          },
+          'path:created': function(e) {
+          }
+      });
   });
 
   //getter for canvas

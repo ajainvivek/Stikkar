@@ -9,6 +9,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, ngDialo
   	url : "/",
     views : {
     	'header' : {
+        controller: 'HeaderCtrl as header',
 		    templateUrl: 'header.html'
     	},
     	'canvas' : {
