@@ -15,16 +15,16 @@ function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout, Utils
   var getCanvasObjects = function () {
   	let canvas = CanvasFactory.getCanvas();
   	return canvas.getObjects();
-  }
+  };
 
   var download = function (url, name) {
   	angular.element('<a>').attr({href:url,download:name})[0].click();
-  }
+  };
 
   var exportAs = function (name) {
   	let canvas = CanvasFactory.getCanvas();
   	download(canvas.toDataURL(), name+'.png');
-  }
+  };
 
   //Save the canvas region
   vm.saveBoard = function () {

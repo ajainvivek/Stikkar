@@ -24,7 +24,7 @@ function CanvasCtrl($scope, $rootScope, CanvasFactory, $timeout) {
   //delete selected object
   vm.deleteSelectedObject = function () {
   	let canvas = CanvasFactory.getCanvas();
-  	let activeObject = canvas.getActiveObject()
+  	let activeObject = canvas.getActiveObject();
   	canvas.remove(activeObject);
   };
 

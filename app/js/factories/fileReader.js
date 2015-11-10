@@ -4,7 +4,7 @@
 * Credits for refernce plunk - http://plnkr.co/edit/y5n16v?p=preview
 **/
 
-function FileReaderFactory($q, $log) {
+function FileReaderFactory($q) {
 
   const factory = {};
 

@@ -15,7 +15,7 @@ function ImagesFactory() {
   factory.getRestoredStickerImages = function (arr) {
     let stickers = localStorage.getItem("stikkar-stickers-images") ? JSON.parse(localStorage.getItem("stikkar-stickers-images")) : [];
     return arr.concat(stickers);
-  }
+  };
 
   //Delete Sticker Images
   factory.deleteStickerImage = function (sticker) {
@@ -28,7 +28,7 @@ function ImagesFactory() {
     }
     stickers.splice(index, 1);
     localStorage.setItem("stikkar-stickers-images", JSON.stringify(stickers));
-  }
+  };
 
   //Save Photo Images  
   factory.savePhotoImage = function (photo) {
@@ -41,7 +41,7 @@ function ImagesFactory() {
   factory.getRestoredPhotoImages = function (arr) {
     let photos = localStorage.getItem("stikkar-photos-images") ? JSON.parse(localStorage.getItem("stikkar-photos-images")) : [];
     return arr.concat(photos);
-  }
+  };
 
   //Delete Photo Images
   factory.deletePhotoImage = function (photo) {
@@ -54,7 +54,7 @@ function ImagesFactory() {
     }
     photos.splice(index, 1);
     localStorage.setItem("stikkar-photos-images", JSON.stringify(photos));
-  }
+  };
 
   return factory;
 }

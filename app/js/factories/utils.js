@@ -13,7 +13,7 @@ function UtilsFactory($rootScope) {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
       s4() + '-' + s4() + s4() + s4();
-  }
+  };
 
   //Calculate LocalStorage Space Used
   factory.localStorageSpace = function(){
@@ -29,7 +29,7 @@ function UtilsFactory($rootScope) {
   //Reset used file storage space on $rootScope
   factory.resetUsedFileStorageSpace = function () {
     $rootScope.usedFileStorageSpace = factory.localStorageSpace();
-  }
+  };
 
   return factory;
 }

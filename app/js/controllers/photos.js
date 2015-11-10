@@ -39,12 +39,12 @@ function PhotosCtrl($scope, $timeout, FileReader, CanvasFactory, ImagesFactory, 
 		let image = {
 			guid: guid,
 			src: $scope.previewImages[0]
-		}
+		};
 		vm.images.push(image);
 		ImagesFactory.savePhotoImage(image);
 		UtilsFactory.resetUsedFileStorageSpace(); //Reset the $rootScope file storage for header data update
 		$scope.previewImages = [];
-	}
+	};
 
 	//Delete Sticker
 	vm.deletePhoto = function (image) {

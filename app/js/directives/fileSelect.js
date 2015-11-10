@@ -24,7 +24,7 @@ function FileSelectDirective() {
            default:
             break; 
         }
-      })
+      });
     },
     controller: function ($scope, FileReader) {
       $scope.getFile = function () {
