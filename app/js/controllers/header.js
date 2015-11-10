@@ -39,6 +39,16 @@ function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout) {
   	}
   });
 
+  //Listener for object cleared
+  $rootScope.$on('objectCleared', function (e) {
+    let objects = getCanvasObjects();
+    if (objects.length === 0) {
+      $timeout(function () { //trigger digest cycle
+        vm.isEdited = false;
+      }, 0);
+    }
+  });
+
   //Export API
   vm.export = function (name, form) {
   	if (form.$valid) { //if form is valid perform action

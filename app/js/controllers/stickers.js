@@ -75,7 +75,7 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
       isUserUploaded: true
     };
 
-    if (form.$valid) { //if form is valid perform action
+    if (form.$valid && scope.previewImages.length) { //if form is valid perform action
       form.$setPristine();
       form.$setUntouched();
       vm.uploaded = false;

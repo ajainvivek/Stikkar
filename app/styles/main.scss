@@ -46,6 +46,38 @@ h1, h2, h3 {
 #canvas_board {
 	height: 100%;
 	width: 100%;
+	position: relative;
+
+	.edit_utils_container {
+		width: 50px;
+	    position: absolute;
+	    top: 0px;
+	    right: -50px;
+
+	    ul.horizontal_container {
+	    	margin: 5px;
+    		padding: 5px;
+
+    		li {
+    			list-style: none;
+			    margin: 0px auto;
+			    background: #fff;
+			    padding: 5px;
+			    text-align: center;
+			    border-bottom: 1px solid #ccc;
+			    cursor: pointer;
+
+			    &:last-child {
+			    	border-bottom: 0px solid $dark;
+			    }
+
+			    &:hover {
+			    	background: rgba(0, 0, 0, 0.1);
+			    }
+    		}
+
+	    }
+	}
 }
 
 /******* Header Style **********/

@@ -12,15 +12,19 @@ function CanvasFactory($rootScope) {
   angular.element(document).ready(function () {
       factory.canvas = new fabric.Canvas("play_board");
 
+      //Event Listeners for canvas
       factory.canvas.on({
           'object:moving': function(e) {
+            $rootScope.$broadcast('objectMoving', e);
           },
           'object:selected': function (e) {
+            $rootScope.$broadcast('objectSelected', e);
           }, 
           'selection:cleared': function (e) {
+            $rootScope.$broadcast('objectCleared', e);
           },
           'object:modified': function(e) {
-
+            $rootScope.$broadcast('objectModified', e);
           },
           'object:added': function(e) {
             $rootScope.$broadcast('objectAdded', e);
@@ -29,6 +33,7 @@ function CanvasFactory($rootScope) {
             $rootScope.$broadcast('objectRemoved', e);
           },
           'path:created': function(e) {
+            $rootScope.$broadcast('pathCreated', e);
           }
       });
   });

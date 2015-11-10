@@ -1,6 +1,7 @@
 'use strict';
 
-import $ from 'jquery'
+import $ from 'jquery';
+import fabric from 'fabric';
 import angular from 'angular';
 
 // angular modules
