@@ -9,8 +9,8 @@
 		<div class="button_container" ng-click="header.openDownloadDialog()">
 			Export 
 		</div>
-		<div class="button_container" ng-show="header.isEdited">
-			Save
+		<div class="button_container" ng-show="header.isEdited" ng-click="header.saveBoard()">
+			{{header.saveText}}
 		</div>	
 	</div>
 </div>

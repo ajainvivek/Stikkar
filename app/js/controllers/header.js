@@ -7,6 +7,7 @@ function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout) {
 
   vm.name = "";
   vm.isEdited = false;
+  vm.saveText = "Save";
 
   var getCanvasObjects = function () {
   	let canvas = CanvasFactory.getCanvas();
@@ -21,6 +22,16 @@ function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout) {
   	let canvas = CanvasFactory.getCanvas();
   	download(canvas.toDataURL(), name+'.png');
   }
+
+  //Save the canvas region
+  vm.saveBoard = function () {
+    let canvas = CanvasFactory.getCanvas();
+    vm.saveText = "Saving..";
+    CanvasFactory.saveCanvas(canvas);
+    $timeout(function () {
+      vm.saveText = "Save";
+    }, 1000);
+  };
 
   //Listener for object added
   $rootScope.$on('objectAdded', function (e) {
