@@ -45,7 +45,8 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
     var currDragElem = ngDragDrop.getCurrentDragElement();
     var imgSrc = currDragElem.attr("src");
     var object = {
-      src : imgSrc
+      src : imgSrc,
+      drop : true
     };
     vm.dropImage(object, event);
     console.log("Dropped", event);
@@ -105,7 +106,15 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
   //Add Image to Canvas Area
   vm.dropImage = function (obj, $event) {
     let canvas = CanvasFactory.getCanvas();
+    let PosX, PosY;
+    if (obj.drop === true) {
+      PosX = $event.clientX - $event.currentTarget.offsetLeft - 50;
+      PosY = $event.clientY - $event.currentTarget.offsetTop - 54; //offset height of header
+    }
     fabric.Image.fromURL(obj.src, function(oImg) {
+      if (obj.drop === true) {
+        oImg.set('left', PosX).set('top',PosY);
+      }
       canvas.add(oImg);
     });
   };
