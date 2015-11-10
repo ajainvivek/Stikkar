@@ -1,6 +1,6 @@
 'use strict';
 
-function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout) {
+function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
 
   // ViewModel
   const vm = this;
@@ -23,6 +23,37 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout) {
   vm.uploaded = false;
   vm.title = "";
   $scope.previewImages = [];
+
+  //Drag & Drop Styles
+  vm.styles = {
+    draggables : {
+      onDragging : {border: "1px dashed #000", cursor : "move"},
+      onStart : {opacity: 0.5}
+    },
+    droppables : {
+      onEnter: {border: "1px dashed #2DA43E"},
+      onLeave: {border: ""}
+    }
+  };
+
+  //Drag Drop Events Callbacks 
+  vm.dragCallback = function (event) {
+    console.log("Dragging", event);
+  };
+
+  vm.dropCallback = function (event) {
+    var currDragElem = ngDragDrop.getCurrentDragElement();
+    var imgSrc = currDragElem.attr("src");
+    var object = {
+      src : imgSrc
+    };
+    vm.dropImage(object, event);
+    console.log("Dropped", event);
+  };
+
+  vm.overCallback = function (event) {
+    console.log("Drag Over", event);
+  };
 
   //Delete Sticker
   vm.deleteSticker = function (image) {

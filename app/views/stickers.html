@@ -2,11 +2,11 @@
 	<div class="button_container">
 		<div id="add_sticker" ng-click="stickers.openUploadDialog()">Add Sticker</div>
 	</div>
-	<ul>
+	<ul ng-drag-drop dropTo="#canvas_board" styles="{{stickers.styles}}" on-drag="stickers.dragCallback(event)" on-drop="stickers.dropCallback(event)" on-over="stickers.overCallback(event)">
 		<li class="item" ng-repeat="image in stickers.images" ng-click="stickers.dropImage(image, $event)">
 			<h1>{{image.title}}</h1>
 			<div ng-show={{image.isUserUploaded}} class="delete" ng-click="stickers.deleteSticker(image)">X</div>
-			<img src="{{image.src}}" height="100" width="100">
+			<img src="{{image.src}}" height="100" width="100" dragIt="true">
 		</li>
 	</ul>
 </div>

@@ -8,7 +8,7 @@
 	</div>
 	<div class="line"></div>
 	<ul>
-		<li class="photos" ng-repeat="image in images">
+		<li class="photos" ng-repeat="image in images" dragIt="true">
 			<img src="{{image}}" height="120" width="120" ng-click="photos.dropImage(image, $event)">	
 		</li>
 	</ul>

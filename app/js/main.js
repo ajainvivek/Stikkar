@@ -24,7 +24,8 @@ const requires = [
   'app.factories',
   'app.directives',
   'ngFileUpload',
-  'ngDialog'
+  'ngDialog',
+  'ngDragDrop'
 ];
 
 // mount on window for testing
