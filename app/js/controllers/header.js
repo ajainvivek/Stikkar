@@ -1,6 +1,6 @@
 'use strict';
 
-function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout) {
+function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout, UtilsFactory, AppSettings) {
 
   // ViewModel
   const vm = this;
@@ -8,6 +8,9 @@ function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout) {
   vm.name = "";
   vm.isEdited = false;
   vm.saveText = "Save";
+  vm.usedSpace = UtilsFactory.localStorageSpace();
+  $rootScope.usedFileStorageSpace = UtilsFactory.localStorageSpace(); //Globally look for changes
+
 
   var getCanvasObjects = function () {
   	let canvas = CanvasFactory.getCanvas();
@@ -25,12 +28,17 @@ function HeaderCtrl($scope, CanvasFactory, ngDialog, $rootScope, $timeout) {
 
   //Save the canvas region
   vm.saveBoard = function () {
-    let canvas = CanvasFactory.getCanvas();
-    vm.saveText = "Saving..";
-    CanvasFactory.saveCanvas(canvas);
-    $timeout(function () {
-      vm.saveText = "Save";
-    }, 1000);
+    if (vm.usedSpace >= AppSettings.maxStorageSpace) { //if storage exceed max app provided storage space then throw error
+      alert("Exceeded max provided localstorage space. Please empty to save.");
+    } else { //save
+      let canvas = CanvasFactory.getCanvas();
+      vm.saveText = "Saving..";
+      CanvasFactory.saveCanvas(canvas);
+      $timeout(function () {
+        vm.saveText = "Save";
+        UtilsFactory.resetUsedFileStorageSpace();
+      }, 1000);
+    }
   };
 
   //Listener for object added

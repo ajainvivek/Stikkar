@@ -1,6 +1,6 @@
 'use strict';
 
-function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
+function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop, ImagesFactory, UtilsFactory, AppSettings) {
 
   // ViewModel
   const vm = this;
@@ -19,6 +19,12 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
   	src: "images/browserify.png",
     isUserUploaded: false
   }];
+
+  vm.usedSpace = UtilsFactory.localStorageSpace();
+
+  //Restore Stored Stickers
+  let stickersImgs = ImagesFactory.getRestoredStickerImages(vm.images);
+  vm.images = stickersImgs;
 
   vm.uploaded = false;
   vm.title = "";
@@ -60,6 +66,8 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
   vm.deleteSticker = function (image) {
     var index = vm.images.indexOf(image);
     vm.images.splice(index, 1);
+    ImagesFactory.deleteStickerImage(image); //delete from persisted localStorage
+    UtilsFactory.resetUsedFileStorageSpace(); //Reset the $rootScope file storage for header data update
   };
 
   //callback function once file is uploaded
@@ -69,17 +77,21 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
 
   //submit sticker
   vm.submitSticker = function (form) {
+    let guid = UtilsFactory.guid(); 
     let sticker = {
       src : $scope.previewImages[0],
       title : vm.title,
-      isUserUploaded: true
+      isUserUploaded: true,
+      guid : guid
     };
 
-    if (form.$valid && scope.previewImages.length) { //if form is valid perform action
+    if (form.$valid && $scope.previewImages.length) { //if form is valid perform action
       form.$setPristine();
       form.$setUntouched();
       vm.uploaded = false;
       vm.images.push(sticker);
+      ImagesFactory.saveStickerImage(sticker); //Persist Sticker Image
+      UtilsFactory.resetUsedFileStorageSpace(); //Reset the $rootScope file storage for header data update
       $scope.previewImages = []; //Reset the images 
       ngDialog.close();
     }
@@ -95,12 +107,16 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop) {
 
   //open upload dialog
   vm.openUploadDialog = function () {
-    ngDialog.open({
-        template: 'stickerDialog.html',
-        closeByDocument: false,
-        closeByEscape: false,
-        scope: $scope
-    });
+    if (vm.usedSpace >= AppSettings.maxStorageSpace) { //if storage exceed max app provided storage space then throw error
+      alert("Exceeded max provided localstorage space. Please empty to save.");
+    } else { //open dialog to save
+      ngDialog.open({
+          template: 'stickerDialog.html',
+          closeByDocument: false,
+          closeByEscape: false,
+          scope: $scope
+      });
+    } 
   };
 
   //Add Image to Canvas Area

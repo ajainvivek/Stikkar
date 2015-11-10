@@ -11,6 +11,14 @@
 		</div>
 		<div class="button_container" ng-show="header.isEdited" ng-click="header.saveBoard()">
 			{{header.saveText}}
+		</div>
+		<div class="info_container">
+			<div class="available">
+				Available Space: <span>5024 KB</span>
+			</div>
+			<div class="free">
+				Used Space: <span>{{usedFileStorageSpace + " KB"}}</span>
+			</div>
 		</div>	
 	</div>
 </div>

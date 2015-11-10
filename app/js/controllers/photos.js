@@ -1,17 +1,26 @@
 'use strict';
 
-function PhotosCtrl($scope, $timeout, FileReader, CanvasFactory) {
+function PhotosCtrl($scope, $timeout, FileReader, CanvasFactory, ImagesFactory, UtilsFactory, AppSettings) {
 
 	// ViewModel
 	const vm = this;
 
-	$scope.images = [];
+	vm.images = [];
+	$scope.previewImages = [];
+	vm.usedSpace = UtilsFactory.localStorageSpace();
+
+	var restoredImages = ImagesFactory.getRestoredPhotoImages(vm.images);
+	vm.images = restoredImages;
 
 	//Click Upload 
 	vm.clickUpload = function () {
-		$timeout(function() { //Notify $digest cycle hack
-			$('#photo_upload').trigger('click');
-		}, 0);
+		if (vm.usedSpace >= AppSettings.maxStorageSpace) { //if storage exceed max app provided storage space then throw error
+	      alert("Exceeded max provided localstorage space. Please empty to save.");
+	    } else { //trigger upload
+			$timeout(function() { //Notify $digest cycle hack
+				$('#photo_upload').trigger('click');
+			}, 0);
+		}	
 	};
 
 	//Add Image to Canvas Area
@@ -24,6 +33,26 @@ function PhotosCtrl($scope, $timeout, FileReader, CanvasFactory) {
 		});
 	};
 
+	//on image upload
+	vm.onFileUpload = function () {
+		let guid = UtilsFactory.guid();
+		let image = {
+			guid: guid,
+			src: $scope.previewImages[0]
+		}
+		vm.images.push(image);
+		ImagesFactory.savePhotoImage(image);
+		UtilsFactory.resetUsedFileStorageSpace(); //Reset the $rootScope file storage for header data update
+		$scope.previewImages = [];
+	}
+
+	//Delete Sticker
+	vm.deletePhoto = function (image) {
+		var index = vm.images.indexOf(image);
+		vm.images.splice(index, 1);
+		ImagesFactory.deletePhotoImage(image); //delete from persisted localStorage
+		UtilsFactory.resetUsedFileStorageSpace(); //Reset the $rootScope file storage for header data update
+	};
 
 }
 
