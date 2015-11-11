@@ -23,10 +23,6 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop, Ima
     src: "images/fabricjs.png",
     isUserUploaded: false
   }, {
-    title: "Blippar",
-    src: "images/blippar.png",
-    isUserUploaded: false
-  }, {
     title: "Beard Face",
     src: "images/moustache/beard_PNG6256.png",
     isUserUploaded: false
