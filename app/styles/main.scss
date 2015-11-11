@@ -227,6 +227,7 @@ h1, h2, h3 {
     				margin: 0px 5px;
     				padding: 0px;
     				overflow-y: scroll;
+    				max-height: 600px;
 
     				li {
     					float: left;
@@ -350,6 +351,7 @@ h1, h2, h3 {
 				margin: 5px 5px;
 				padding: 0px;
 				overflow-y: scroll;
+				max-height: 600px;
 
 				li {
 					text-decoration: none;

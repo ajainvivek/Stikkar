@@ -5,7 +5,7 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop, Ima
   // ViewModel
   const vm = this;
 
-
+  //Images are hardcoded [TODO] Move to Service Layer
   vm.images = [{
   	title: "Gulp",
   	src: "images/gulp.png",
@@ -17,6 +17,26 @@ function StickersCtrl($scope, CanvasFactory, ngDialog, $timeout, ngDragDrop, Ima
   }, {
   	title: "Browserify",
   	src: "images/browserify.png",
+    isUserUploaded: false
+  }, {
+    title: "FabricJS",
+    src: "images/fabricjs.png",
+    isUserUploaded: false
+  }, {
+    title: "Blippar",
+    src: "images/blippar.png",
+    isUserUploaded: false
+  }, {
+    title: "Beard Face",
+    src: "images/moustache/beard_PNG6256.png",
+    isUserUploaded: false
+  }, {
+    title: "Beard Half Face",
+    src: "images/moustache/beard_PNG6258.png",
+    isUserUploaded: false
+  }, {
+    title: "Moustache",
+    src: "images/moustache/beard_PNG6268.png",
     isUserUploaded: false
   }];
 
