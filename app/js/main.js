@@ -32,7 +32,6 @@ const requires = [
 // mount on window for testing
 window.app = angular.module('app', requires);
 window.$ = $;
-window.fabric = fabric;
 
 angular.module('app').constant('AppSettings', require('./constants'));
 

@@ -45,17 +45,26 @@ function CanvasFactory($rootScope) {
   factory.saveCanvas = function (canvas) {
     canvas.deactivateAll();
     canvas.deactivateAllWithDispatch();
-    let jsonStr = JSON.stringify(canvas);
+    let obj = {
+      data: JSON.stringify(canvas),
+      count: {
+        photos: factory.photosCount,
+        stickers: factory.stickersCount
+      }
+    };
     localStorage.setItem('stikkar-save-canvas-state', "");
-    localStorage.setItem('stikkar-save-canvas-state', jsonStr);
+    localStorage.setItem('stikkar-save-canvas-state', JSON.stringify(obj));
   };
 
   //Restore Canvas State
   factory.restoreCanvas = function () {
     let canvas = factory.canvas;
-    let editedData = localStorage.getItem('stikkar-save-canvas-state') ? JSON.parse(localStorage.getItem('stikkar-save-canvas-state')) : {};
+    let stickerSavedState = localStorage.getItem('stikkar-save-canvas-state') ? JSON.parse(localStorage.getItem('stikkar-save-canvas-state')) : {};
+    let editedData = stickerSavedState.data ? stickerSavedState.data : {};
     canvas.clear();
     canvas.loadFromJSON(editedData, canvas.renderAll.bind(canvas));
+    factory.photosCount = stickerSavedState.count ? stickerSavedState.count.photos : 0;
+    factory.stickersCount = stickerSavedState.count ? stickerSavedState.count.stickers : 0;
   };
 
   //getter for canvas
